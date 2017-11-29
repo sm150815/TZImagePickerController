@@ -38,7 +38,12 @@
     self.view.backgroundColor = [UIColor blackColor];
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     if (tzImagePickerVc) {
-        self.navigationItem.title = tzImagePickerVc.previewBtnTitleStr;
+         UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.text = tzImagePickerVc.previewBtnTitleStr;
+        titleLabel.textColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(254.0/255.0) alpha:1.0];
+        [titleLabel sizeToFit];
+        self.navigationItem.titleView = titleLabel;
+         
     }
     [self configMoviePlayer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pausePlayerAndShowNaviBar) name:UIApplicationWillResignActiveNotification object:nil];

@@ -77,7 +77,14 @@ static CGFloat itemMargin = 5;
     _isSelectOriginalPhoto = tzImagePickerVc.isSelectOriginalPhoto;
     _shouldScrollToBottom = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = _model.name;
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = _model.name;
+    titleLabel.textColor =  [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(254.0/255.0) alpha:1.0];
+    [titleLabel sizeToFit];
+    self.navigationItem.titleView = titleLabel;
+    
+//    self.navigationItem.title = _model.name;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:tzImagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:tzImagePickerVc action:@selector(cancelButtonClick)];
     if (tzImagePickerVc.navLeftBarButtonSettingBlock) {
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
